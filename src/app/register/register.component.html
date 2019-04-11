@@ -1,0 +1,45 @@
+<div class="container col-md-6 col-md-offset-3">
+<div class="panel-body">
+  <h1 class="text-center" style="color: rgb(255, 255, 255);">Register</h1>
+  <form name="form" (ngSubmit)="f.form.valid && registerUser()" #f="ngForm" novalidate>
+      <div class="form-group" >
+          <label for="firstName" style="color: rgb(255, 255, 255);">First Name</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="fname"  required />
+          <div *ngIf="f.submitted && !f.form.controls.firstName.valid" class="help-block text-danger">First Name is required</div>
+      </div>
+
+      <div class="form-group">
+          <label for="lastName" style="color: rgb(255, 255, 255);">Last Name</label>
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="lname"  required />
+          <div *ngIf="f.submitted && !f.form.controls.lastName.valid" class="help-block text-danger">Last Name is required</div>
+      </div>
+
+      <div class="form-group" >
+          <label for="userId" style="color: rgb(255, 255, 255);">Username</label>
+          <input type="text" class="form-control" name="userId" [(ngModel)]="userId"  required />
+          <div *ngIf="f.submitted && !f.form.controls.userId.valid" class="help-block text-danger">Username is required</div>
+      </div>
+
+      <div class="form-group">
+          <label for="password" style="color: rgb(255, 255, 255);">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="password"  required />
+          <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Password is required</div>
+      </div>
+      <div class="form-group">
+            <label for="password" style="color: rgb(255, 255, 255);">User Type</label>
+            <select class="form-control" name="usertype" [(ngModel)]="usertype" required>
+              <option value="" disabled selected hidden>Please Select</option>
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+              <div *ngIf="f.submitted && !f.form.controls.usertype.valid" class="help-block text-danger">User Type is required</div>
+            </select>
+      </div>
+      <div class="form-group">
+          <label class="control-label" for="save"></label>
+          <div>
+            <button id="reg-button" class="btn btn-primary">Register</button>&nbsp;
+          </div>
+      </div>
+  </form>
+</div>
+</div>

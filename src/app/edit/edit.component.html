@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="panel panel-default">
+    <h3 class="text-center" style="color: rgb(255, 255, 255);">Edit News</h3>
+    <br>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="img-thumbnail img-responsive" src="{{news.urlToImage}}">
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h6  class="text-center" >News Title</h6>
+              <textarea #title class="card-text" rows="3" cols="54" value="title">{{news.title}}</textarea>
+              <h6 class="text-center">News Description</h6>
+              <textarea #description class="card-text" rows="6" cols="54" value="description">{{news.description}}</textarea>
+              <!-- <p class="card-text"><small class="text-muted">Published On: {{news.source.name}}</small></p> -->
+            </div>
+          </div>
+          <hr />
+          <button class="btn btn-primary btn-lg  btn-block" (click)="updateWatchList(title.value,description.value,news.url,news.urlToImage,news.id,news.userType)" >Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

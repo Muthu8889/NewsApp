@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="panel panel-default">
+      <h3 class="text-center" style="color: rgb(255, 255, 255);">{{news.title}}</h3>
+    <br>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="img-thumbnail img-responsive" src="{{news.urlToImage}}">
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-text">{{news.description}}</p>
+                <!-- <p class="card-text"><small class="text-muted">Published On: {{news.source.name}}</small></p> -->
+              </div>
+            </div>
+          <hr />
+          <button  class="btn btn-white btn-lg  btn-block"><a href="{{news.url}}" target="_blank">For more information</a></button>
+          <button [hidden]="isFromWatchlist" id="addBtn" type="button" class="btn btn-primary btn-lg  btn-block" (click)="addToWatchList(news.title,news.description,news.url,news.urlToImage,news.id)">Add to Watchlist</button>
+          <button [hidden]="!isFromWatchlist" id="removeBtn" type="button" class="btn btn-danger btn-lg btn-block" (click)="deleteNews(news.title)">Remove from Watchlist</button>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

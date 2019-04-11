@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand">{{title}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" *ngIf="isUserLoggedIn">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink='/home'>Top Headlines
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="watchlist" routerLink='/watchlist'>My Watchlist</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink='/discover-movies'>Discover Movies</a> 
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/logout' id="log-out" (click)="reload()">Logout</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto" *ngIf="!isUserLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/register'>Register</a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li>
+          <form name="form" class="form-inline my-2 my-lg-0" (ngSubmit)="f.form.valid && loginUser()" #f="ngForm" novalidate>
+                  <label for="username">Username :</label>&nbsp;
+                  <input type="text" class="form-control" name="userid" [(ngModel)]="userId" id="userId"  required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div *ngIf="f.submitted && !f.form.controls.userid.valid" class="help-block text-danger">Username is required</div>
+                  <label for="password" >Password</label>&nbsp;&nbsp;
+                  <input type="password" class="form-control" name="password" [(ngModel)]="password" id="password" required />&nbsp;&nbsp;
+                  <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Password is required</div>
+                  <button [disabled]="loading" id="login" class="btn btn-primary">Login</button>&nbsp;
+          </form>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" *ngIf="isUserLoggedIn">
+        <input name="Searchbox" [(ngModel)]="searchQuery" #searchBox id="search-box" class="form-control" 
+          type="text" placeholder="Search" aria-label="Search">
+        <button id="search-button" type="submit" class="btn btn-primary text-center" (click)="Search()">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<br>
+<br>
+<footer class="fixed-bottom">
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <h4>Copyright © 2019 </h4>
+      <h4>All rights reserved. </h4>
+    </div>
+  </div>
+  <!--End of row -->
+</footer>

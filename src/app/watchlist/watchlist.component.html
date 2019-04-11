@@ -1,0 +1,24 @@
+<div class="container">
+  <!-- <h1 class="text-center" style="color: rgb(255, 255, 255);"></h1> -->
+  <br>
+  <div class="row card-group">
+    <div class="col-2"></div>
+    <div class="col-8">
+    <div *ngFor="let news of watchList">
+      <div class="card mb-3">
+        <img class="card-img-top" src="{{news.urlToImage}}" alt="Card image cap" width="50%"
+        height="50%">
+        <div class="card-body">
+          <h5 class="card-title">{{news.title}}</h5>
+          <p class="card-text">{{news.description}}</p>
+          <button class="btn btn-primary" (click)="goToDetails(news)">more..</button>&nbsp;
+          <button class="btn btn-danger" (click)="deleteNews(news.title)" >Remove</button>&nbsp;
+          <button *ngIf="!isAdmin" class="btn btn-success" id="edit" (click)="editNews(news)">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-2"></div>
+  </div>
+  <br>
+</div>
